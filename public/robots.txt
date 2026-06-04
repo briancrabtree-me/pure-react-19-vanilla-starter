@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://briancrabtree-me.github.io/pure-react-19-vanilla-starter/sitemap.xml

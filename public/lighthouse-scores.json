@@ -1,0 +1,40 @@
+{
+  "source": "pagespeed-insights",
+  "reference": {
+    "url": "https://briancrabtree.me/",
+    "capturedAt": "2026-06-03T03:53:00Z",
+    "mobile": {
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    },
+    "desktop": {
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    }
+  },
+  "demo": {
+    "url": "https://briancrabtree-me.github.io/pure-react-19-vanilla-starter/",
+    "capturedAt": "2026-06-03T20:21:00Z",
+    "psiRun": "https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fbriancrabtree-me.github.io%2Fpure-react-19-vanilla-starter%2F",
+    "psiReports": {
+      "mobile": "https://pagespeed.web.dev/analysis/https-briancrabtree-me-github-io-pure-react-19-vanilla-starter/lo5ura31eh?form_factor=mobile",
+      "desktop": "https://pagespeed.web.dev/analysis/https-briancrabtree-me-github-io-pure-react-19-vanilla-starter/lo5ura31eh?form_factor=desktop"
+    },
+    "mobile": {
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    },
+    "desktop": {
+      "performance": 100,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    }
+  }
+}

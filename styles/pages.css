@@ -1,0 +1,9 @@
+.about-page .stack-list {
+  margin: var(--gap-lg) 0 0;
+  padding-left: 1.25rem;
+  color: rgb(var(--text-dim));
+}
+
+.about-page .stack-list li {
+  margin-bottom: var(--gap-xs);
+}

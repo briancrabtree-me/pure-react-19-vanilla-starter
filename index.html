@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a0a" />
+<meta name="robots" content="index, follow" />
+<link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+<link rel="canonical" href="https://briancrabtree-me.github.io/pure-react-19-vanilla-starter/" />
+<title>Pure React 19 Starter | Vite + vanilla CSS</title>
+<meta name="description" content="Vite + React 19 + plain CSS. No Tailwind, no Next.js. Prerender shell and blocking CSS before hydration." />
+<link rel="preload" as="image" href="%BASE_URL%demo-hero.webp" type="image/webp" fetchpriority="high" />
+<script>
+  // Match prerender shell to /about before React (GitHub Pages has no SSR).
+  (function () {
+    try {
+      var p = window.location.pathname;
+      var isAbout = /\/about\/?$/.test(p);
+      document.documentElement.classList.add(isAbout ? 'route-app' : 'route-home');
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --pr-bg: #0a0a0a;
+    --pr-fg: #f0f0f0;
+    --pr-fg-soft: #bdbdbd;
+    --pr-nav-bg: #050505;
+    --pr-accent: #ccff00;
+    --pr-accent-fg: #0a0a0a;
+  }
+  html, body { margin: 0; padding: 0; background: var(--pr-bg); color: var(--pr-fg); font-family: system-ui, -apple-system, sans-serif; }
+  .prerender-shell { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: var(--pr-bg); }
+  html.app-rendered .prerender-shell { visibility: hidden !important; pointer-events: none !important; }
+  .prerender-nav { position: absolute; top: 0; left: 0; right: 0; height: 56px; background: var(--pr-nav-bg); display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .prerender-brand { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .prerender-brand span { color: var(--pr-accent); }
+  .prerender-hero { position: absolute; left: 0; right: 0; top: 56px; bottom: 0; padding: 24px; max-width: 960px; margin: 0 auto; }
+  .prerender-hero-h1 { font-size: clamp(36px, 7vw, 72px); line-height: 1; margin: 0 0 16px; font-weight: 800; letter-spacing: -0.04em; }
+  .prerender-hero-h1 em { font-style: normal; color: var(--pr-accent); }
+  .prerender-hero-sub { font-size: 16px; line-height: 1.5; margin: 0 0 20px; max-width: 42ch; color: var(--pr-fg-soft); }
+  .prerender-hero-img { display: block; width: min(160px, 40vw); height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid rgba(255,255,255,0.12); margin-top: 8px; }
+  .prerender-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+  .prerender-cta span { display: block; width: 118px; height: 40px; }
+  html.route-app .prerender-hero { display: flex; align-items: center; justify-content: center; }
+  html.route-app .prerender-hero > * { display: none; }
+  html.route-app .prerender-hero::after { content: ""; width: 40px; height: 40px; border: 3px solid rgba(204,255,0,0.2); border-top-color: var(--pr-accent); border-radius: 999px; animation: prSpin 0.8s linear infinite; }
+  @keyframes prSpin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="prerender-shell" aria-hidden="true">
+  <div class="prerender-nav">
+    <span class="prerender-brand">pure<span>-react-19</span></span>
+  </div>
+  <div class="prerender-hero">
+    <img class="prerender-hero-img" src="%BASE_URL%demo-hero.webp" alt="" width="160" height="120" fetchpriority="high" decoding="async" />
+    <h1 class="prerender-hero-h1">React 19.<em>Zero bloat.</em></h1>
+    <p class="prerender-hero-sub">Vite + React 19 + vanilla CSS. Blocking stylesheet before the module entry.</p>
+    <div class="prerender-cta" aria-hidden="true"><span></span><span></span></div>
+  </div>
+</div>
+<div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "pure-react-19-vanilla-starter",
+  "version": "1.0.0",
+  "description": "Vite + React 19 + vanilla CSS starter with prerender shell and CSS-before-JS postbuild",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "vite build && node scripts/postbuild-html.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.0",
+    "vite": "^5.4.0"
+  }
+}

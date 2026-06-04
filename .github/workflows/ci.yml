@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - name: Build (GitHub Pages base path)
+        env:
+          VITE_BASE_PATH: /pure-react-19-vanilla-starter/
+          PUBLIC_SITE_URL: https://briancrabtree-me.github.io/pure-react-19-vanilla-starter
+        run: npm run build
+      - name: Verify inlined CSS before module script
+        run: |
+          test -f dist/about/index.html
+          node -e "
+            const fs = require('fs');
+            const h = fs.readFileSync('dist/index.html', 'utf8');
+            const css = h.indexOf('<style data-app-css>');
+            const js = h.indexOf('type=\"module\"');
+            if (css < 0 || js < 0 || css > js) {
+              console.error('Expected inlined app CSS before module script');
+              process.exit(1);
+            }
+            if (/rel=[\"']modulepreload[\"'][^>]*core-ui/i.test(h)) {
+              console.error('core-ui modulepreload should be stripped');
+              process.exit(1);
+            }
+          "
